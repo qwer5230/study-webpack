@@ -72,6 +72,7 @@ const createCompiler = (rawOptions, compilerIndex) => {
 	new NodeEnvironmentPlugin({
 		infrastructureLogging: options.infrastructureLogging
 	}).apply(compiler);
+	// 如果有plugin 那么会在这里进行激活
 	if (Array.isArray(options.plugins)) {
 		for (const plugin of options.plugins) {
 			if (typeof plugin === "function") {
@@ -126,6 +127,10 @@ const webpack = /** @type {WebpackFunctionSingle & WebpackFunctionMulti} */ (
 	 */
 	(options, callback) => {
 		const create = () => {
+			/**
+			 * webpck的入口函数，创建compiler对象用
+			 */
+			debugger;
 			if (!asArray(options).every(webpackOptionsSchemaCheck)) {
 				getValidateSchema()(webpackOptionsSchema, options);
 				util.deprecate(

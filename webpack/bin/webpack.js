@@ -77,7 +77,7 @@ const runCli = cli => {
 	const path = require("path");
 	const pkgPath = require.resolve(`${cli.package}/package.json`);
 	const pkg = require(pkgPath);
-	// 入口函数，获取webpack的最新package内容
+	// 获取cli 的入口函数，cli在构建的逻辑就是合并配置，然后调用webpack的逻辑，所以暂时不看了
 	if (pkg.type === "module" || /\.mjs/i.test(pkg.bin[cli.binName])) {
 		import(path.resolve(path.dirname(pkgPath), pkg.bin[cli.binName])).catch(
 			err => {
@@ -86,7 +86,7 @@ const runCli = cli => {
 			}
 		);
 	} else {
-		debugger;
+		// 获取cli 的入口函数，cli在构建的逻辑就是合并配置，然后调用webpack的逻辑，所以暂时不看了
 		require(path.resolve(path.dirname(pkgPath), pkg.bin[cli.binName]));
 	}
 };

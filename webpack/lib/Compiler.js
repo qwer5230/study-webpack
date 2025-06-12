@@ -166,6 +166,9 @@ class Compiler {
 	 */
 	constructor(context, options = /** @type {WebpackOptions} */ ({})) {
 		debugger;
+		/**
+		 * 初始化下hooks， 基于tabable的hook机制，后面在看他的源码 todo
+		 */
 		this.hooks = Object.freeze({
 			/** @type {SyncHook<[]>} */
 			initialize: new SyncHook([]),
@@ -348,6 +351,7 @@ class Compiler {
 		 * @type {Set<string>}
 		 */
 		this._assetEmittingPreviousFiles = new Set();
+		debugger;
 	}
 
 	/**
@@ -498,6 +502,7 @@ class Compiler {
 	 * @returns {void}
 	 */
 	run(callback) {
+		debugger;
 		if (this.running) {
 			return callback(new ConcurrentCompilationError());
 		}
@@ -607,9 +612,12 @@ class Compiler {
 		};
 
 		const run = () => {
+			/**
+			 * 触发异步钩子， 这里会触发beforeRun和run钩子， 后面在看
+			 */
 			this.hooks.beforeRun.callAsync(this, err => {
 				if (err) return finalCallback(err);
-
+				debugger;
 				this.hooks.run.callAsync(this, err => {
 					if (err) return finalCallback(err);
 
