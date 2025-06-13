@@ -13,10 +13,21 @@ cd test-app
 yarn install
 yarn link webpck
 
+
+cd ../
+
+cd webpack-cli/packages/webpack-cli
+yarn install
+yarn link
+
 yarn global add ndb
+
+
 
 
 # 调试
 cd test-app
 
 ndb webpack
+
+https://juejin.cn/column/6978684601921175583

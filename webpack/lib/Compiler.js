@@ -1346,6 +1346,7 @@ ${other}`);
 	 * @returns {void}
 	 */
 	compile(callback) {
+		debugger;
 		const params = this.newCompilationParams();
 		this.hooks.beforeCompile.callAsync(params, err => {
 			if (err) return callback(err);

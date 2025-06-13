@@ -3047,6 +3047,7 @@ BREAKING CHANGE: Asset processing hooks in Compilation has been merged into a si
 	 * @returns {void}
 	 */
 	seal(callback) {
+		debugger;
 		/**
 		 * @param {WebpackError=} err err
 		 * @returns {void}
