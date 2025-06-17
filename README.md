@@ -11,7 +11,7 @@ cd ../
 
 cd test-app
 yarn install
-yarn link webpck
+yarn link webpack
 
 
 cd ../
