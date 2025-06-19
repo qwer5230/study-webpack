@@ -177,6 +177,7 @@ module.exports = class HarmonyExportDependencyParserPlugin {
 		parser.hooks.exportImportSpecifier.tap(
 			PLUGIN_NAME,
 			(statement, source, id, name, idx) => {
+				debugger;
 				const harmonyNamedExports = (parser.state.harmonyNamedExports =
 					parser.state.harmonyNamedExports || new Set());
 				let harmonyStarExports = null;

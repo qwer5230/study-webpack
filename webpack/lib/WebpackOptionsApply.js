@@ -394,7 +394,7 @@ class WebpackOptionsApply extends OptionsApply {
 			(options.context),
 			options.entry
 		);
-
+		// entry 入口分析函数， 构建的开始
 		new RuntimePlugin().apply(compiler);
 
 		new InferAsyncModulesPlugin().apply(compiler);

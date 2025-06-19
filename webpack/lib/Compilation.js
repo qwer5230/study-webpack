@@ -1945,7 +1945,7 @@ BREAKING CHANGE: Asset processing hooks in Compilation has been merged into a si
 		callback
 	) {
 		const moduleGraph = this.moduleGraph;
-
+		debugger;
 		const currentProfile = this.profile ? new ModuleProfile() : undefined;
 
 		this.factorizeModule(
@@ -2284,6 +2284,8 @@ BREAKING CHANGE: Asset processing hooks in Compilation has been merged into a si
 				)
 			);
 		}
+		// 构建module 子类
+		debugger;
 
 		this.handleModuleCreation(
 			{
@@ -2322,7 +2324,7 @@ BREAKING CHANGE: Asset processing hooks in Compilation has been merged into a si
 			typeof optionsOrName === "object"
 				? optionsOrName
 				: { name: optionsOrName };
-
+		debugger;
 		this._addEntryItem(context, entry, "dependencies", options, callback);
 	}
 
@@ -3064,6 +3066,7 @@ BREAKING CHANGE: Asset processing hooks in Compilation has been merged into a si
 			this.moduleGraph,
 			this.outputOptions.hashFunction
 		);
+		debugger;
 		this.chunkGraph = chunkGraph;
 
 		if (this._backCompat) {
@@ -3224,13 +3227,15 @@ Or do you want to use the entrypoints '${name}' and '${runtime}' independently o
 				entry.setRuntimeChunk(chunk);
 			}
 		}
+		// 将这些 Chunk 处理成 Graph 结构，方便后续处理
+		debugger;
 		buildChunkGraph(this, chunkGraphInit);
 		this.hooks.afterChunks.call(this.chunks);
 		this.logger.timeEnd("create chunks");
 
 		this.logger.time("optimize");
 		this.hooks.optimize.call();
-
+		/** 优化阶段  优化 Chunk 结构 */
 		while (this.hooks.optimizeModules.call(this.modules)) {
 			/* empty */
 		}
@@ -3316,6 +3321,8 @@ Or do you want to use the entrypoints '${name}' and '${runtime}' independently o
 
 					this.logger.time("code generation");
 					this.hooks.beforeCodeGeneration.call();
+					// 优化的差不多了，开始生成chunk
+					debugger;
 					this.codeGeneration(err => {
 						if (err) {
 							return finalCallback(err);
@@ -3334,7 +3341,7 @@ Or do you want to use the entrypoints '${name}' and '${runtime}' independently o
 						const codeGenerationJobs = this.createHash();
 						this.hooks.afterHash.call();
 						this.logger.timeEnd("hashing");
-
+						debugger;
 						this._runCodeGenerationJobs(codeGenerationJobs, err => {
 							if (err) {
 								return finalCallback(err);
@@ -3409,6 +3416,8 @@ Or do you want to use the entrypoints '${name}' and '${runtime}' independently o
 							this.logger.time("create chunk assets");
 							if (this.hooks.shouldGenerateChunkAssets.call() !== false) {
 								this.hooks.beforeChunkAssets.call();
+								debugger;
+								// 生成chunk 资产文件
 								this.createChunkAssets(err => {
 									this.logger.timeEnd("create chunk assets");
 									if (err) {
@@ -3425,6 +3434,7 @@ Or do you want to use the entrypoints '${name}' and '${runtime}' independently o
 				}
 			);
 		});
+		debugger;
 	}
 
 	/**
@@ -3466,6 +3476,7 @@ Or do you want to use the entrypoints '${name}' and '${runtime}' independently o
 	 * @param {Callback} callback callback
 	 */
 	codeGeneration(callback) {
+		debugger;
 		const { chunkGraph } = this;
 		this.codeGenerationResults = new CodeGenerationResults(
 			this.outputOptions.hashFunction
@@ -3546,6 +3557,7 @@ Or do you want to use the entrypoints '${name}' and '${runtime}' independently o
 						return callback();
 					}
 					const { hash, runtime, runtimes } = job;
+					debugger;
 					this._codeGenerationModule(
 						module,
 						runtime,
@@ -4646,6 +4658,7 @@ This prevents using hashes of each other and should be avoided.`);
 	 * @param {AssetInfo=} oldInfo old asset information
 	 */
 	_setAssetInfo(file, newInfo, oldInfo = this.assetsInfo.get(file)) {
+		debugger;
 		if (newInfo === undefined) {
 			this.assetsInfo.delete(file);
 		} else {
@@ -4704,6 +4717,7 @@ This prevents using hashes of each other and should be avoided.`);
 				}
 			}
 		}
+		debugger;
 	}
 
 	/**

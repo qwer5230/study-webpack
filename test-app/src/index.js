@@ -1,4 +1,4 @@
-// import './style.css'
+import './style.css'
 import { runa } from './a.js'
 import { runb } from './b.js'
 

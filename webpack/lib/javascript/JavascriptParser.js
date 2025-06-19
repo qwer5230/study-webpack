@@ -2687,6 +2687,7 @@ class JavascriptParser extends Parser {
 							/** @type {string} */
 							(/** @type {Literal} */ (specifier.exported).value);
 						if (source) {
+							debugger;
 							this.hooks.exportImportSpecifier.call(
 								statement,
 								source,
@@ -2802,6 +2803,7 @@ class JavascriptParser extends Parser {
 				(/** @type {Literal} */ (statement.exported).value)
 			: null;
 		this.hooks.exportImport.call(statement, source);
+		debugger;
 		this.hooks.exportImportSpecifier.call(statement, source, null, name, 0);
 	}
 

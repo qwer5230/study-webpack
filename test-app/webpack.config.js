@@ -33,54 +33,54 @@ module.exports = {
   // },
   
   // // 模块解析配置
-  // resolve: {
-  //   extensions: ['.js', '.jsx', '.ts', '.tsx'],
-  //   alias: {
-  //     '@': path.resolve(__dirname, 'src')
-  //   }
-  // },
+  resolve: {
+    extensions: ['.js', '.jsx', '.ts', '.tsx'],
+    alias: {
+      '@': path.resolve(__dirname, 'src')
+    }
+  },
   
-  // // 插件配置
-  // plugins: [
-  //   new HtmlWebpackPlugin({
-  //     template: './src/index.html',
-  //     filename: 'index.html',
-  //     inject: 'body'
-  //   })
-  // ],
+  // 插件配置
+  plugins: [
+    new HtmlWebpackPlugin({
+      template: './src/index.html',
+      filename: 'index.html',
+      inject: 'body'
+    })
+  ],
   
-  // // 模块加载器配置
-  // module: {
-  //   rules: [
-  //     // JavaScript/ES6+ 处理
-  //     {
-  //       test: /\.m?js$/,
-  //       exclude: /node_modules/,
-  //       use: {
-  //         loader: 'babel-loader',
-  //         options: {
-  //           presets: ['@babel/preset-env']
-  //         }
-  //       }
-  //     },
+  // 模块加载器配置
+  module: {
+    rules: [
+      // JavaScript/ES6+ 处理
+      {
+        test: /\.m?js$/,
+        exclude: /node_modules/,
+        use: {
+          loader: 'babel-loader',
+          options: {
+            presets: ['@babel/preset-env']
+          }
+        }
+      },
       
-  //     // CSS 处理
-  //     {
-  //       test: /\.css$/i,
-  //       use: ['style-loader', 'css-loader']
-  //     },
+      // CSS 处理
+      {
+        test: /\.css$/i,
+        use: ['style-loader', 'css-loader']
+      },
       
-  //     // 图片处理
-  //     {
-  //       test: /\.(png|svg|jpg|jpeg|gif)$/i,
-  //       type: 'asset/resource'
-  //     },
+      // 图片处理
+      {
+        test: /\.(png|svg|jpg|jpeg|gif)$/i,
+        type: 'asset/resource'
+      },
       
-  //     // 字体处理
-  //     {
-  //       test: /\.(woff|woff2|eot|ttf|otf)$/i,
-  //       type: 'asset/resource'
-  //     }
-  //   ]
-  // }
+      // 字体处理
+      {
+        test: /\.(woff|woff2|eot|ttf|otf)$/i,
+        type: 'asset/resource'
+      }
+    ]
+  }
 } 

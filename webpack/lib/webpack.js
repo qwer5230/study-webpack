@@ -92,6 +92,7 @@ const createCompiler = (rawOptions, compilerIndex) => {
 	}
 	compiler.hooks.environment.call();
 	compiler.hooks.afterEnvironment.call();
+	// 开始处理配置
 	new WebpackOptionsApply().process(options, compiler);
 	compiler.hooks.initialize.call();
 	return compiler;
@@ -130,7 +131,7 @@ const webpack = /** @type {WebpackFunctionSingle & WebpackFunctionMulti} */ (
 			/**
 			 * webpck的入口函数，创建compiler对象用
 			 */
-			debugger;
+			// debugger
 			if (!asArray(options).every(webpackOptionsSchemaCheck)) {
 				getValidateSchema()(webpackOptionsSchema, options);
 				util.deprecate(
@@ -165,11 +166,12 @@ const webpack = /** @type {WebpackFunctionSingle & WebpackFunctionMulti} */ (
 				// 监听配置
 				watchOptions = webpackOptions.watchOptions || {};
 			}
+			debugger;
 			return { compiler, watch, watchOptions };
 		};
 		if (callback) {
 			try {
-				// cli 收集完配置后，会调用这里的create方法，创建compiler对象
+				// cli 收集完配置后，会调用这里的create方法，创建compiler对象, 此时已经把entry的信息记录好了
 				const { compiler, watch, watchOptions } = create();
 				if (watch) {
 					compiler.watch(watchOptions, callback);
@@ -184,6 +186,7 @@ const webpack = /** @type {WebpackFunctionSingle & WebpackFunctionMulti} */ (
 						});
 					});
 				}
+				debugger;
 				return compiler;
 			} catch (err) {
 				process.nextTick(() => callback(/** @type {Error} */ (err)));

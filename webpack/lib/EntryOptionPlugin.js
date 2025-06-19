@@ -47,6 +47,7 @@ class EntryOptionPlugin {
 					/** @type {Exclude<EntryDescription["import"], undefined>} */
 					(desc.import);
 				for (const entry of descImport) {
+					// 没有一个入口，都会执行一个entry插件， 也就是生成后续n个chunk或者说output
 					new EntryPlugin(context, entry, options).apply(compiler);
 				}
 			}

@@ -619,6 +619,7 @@ class Compiler {
 				if (err) return finalCallback(err);
 				debugger;
 				this.hooks.run.callAsync(this, err => {
+					debugger;
 					if (err) return finalCallback(err);
 
 					this.readRecords(err => {
@@ -717,7 +718,7 @@ class Compiler {
 		 */
 		const emitFiles = err => {
 			if (err) return callback(err);
-
+			debugger;
 			const assets = compilation.getAssets();
 			compilation.assets = { ...compilation.assets };
 			/** @type {Map<string, SimilarEntry>} */
@@ -1042,9 +1043,11 @@ ${other}`);
 				}
 			);
 		};
-
+		debugger;
+		// 准备emit了，写入到dist了
 		this.hooks.emit.callAsync(compilation, err => {
 			if (err) return callback(err);
+			debugger;
 			outputPath = compilation.getPath(this.outputPath, {});
 			mkdirp(
 				/** @type {OutputFileSystem} */ (this.outputFileSystem),
@@ -1308,6 +1311,7 @@ ${other}`);
 		compilation.name = this.name;
 		compilation.records = this.records;
 		this.hooks.thisCompilation.call(compilation, params);
+		debugger;
 		this.hooks.compilation.call(compilation, params);
 		return compilation;
 	}
@@ -1347,17 +1351,20 @@ ${other}`);
 	 */
 	compile(callback) {
 		debugger;
+		/** 开始准备构建 */
 		const params = this.newCompilationParams();
 		this.hooks.beforeCompile.callAsync(params, err => {
 			if (err) return callback(err);
 
 			this.hooks.compile.call(params);
-
+			/** 创建一个 compilation 实例 */
+			debugger;
 			const compilation = this.newCompilation(params);
 
 			const logger = compilation.getLogger("webpack.Compiler");
 
 			logger.time("make hook");
+			/** 开始构建 */
 			this.hooks.make.callAsync(compilation, err => {
 				logger.timeEnd("make hook");
 				if (err) return callback(err);
@@ -1374,6 +1381,7 @@ ${other}`);
 							if (err) return callback(err);
 
 							logger.time("seal compilation");
+							/** 生成阶段 */
 							compilation.seal(err => {
 								logger.timeEnd("seal compilation");
 								if (err) return callback(err);

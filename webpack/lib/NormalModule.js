@@ -999,7 +999,8 @@ class NormalModule extends Module {
 			/** @type {BuildInfo} */
 			(this.buildInfo).buildDependencies = new LazySet();
 		}
-
+		debugger;
+		/** 开始执行 loader, 转换成标准的js */
 		runLoaders(
 			{
 				resource: this.resource,
@@ -1344,7 +1345,8 @@ class NormalModule extends Module {
 			try {
 				const source = /** @type {Source} */ (this._source).source();
 				/** @type {Parser} */
-				(this.parser).parse(this._ast || source, {
+				debugger;
+				this.parser.parse(this._ast || source, {
 					source,
 					current: this,
 					module: this,
@@ -1355,7 +1357,9 @@ class NormalModule extends Module {
 				handleParseError(/** @type {Error} */ (parseErr));
 				return;
 			}
+			debugger;
 			handleParseResult();
+			debugger;
 		});
 	}
 

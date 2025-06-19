@@ -34,6 +34,7 @@ class EntryPlugin {
 		compiler.hooks.compilation.tap(
 			PLUGIN_NAME,
 			(compilation, { normalModuleFactory }) => {
+				debugger;
 				compilation.dependencyFactories.set(
 					EntryDependency,
 					normalModuleFactory
@@ -43,8 +44,9 @@ class EntryPlugin {
 
 		const { entry, options, context } = this;
 		const dep = EntryPlugin.createDependency(entry, options);
-
+		debugger;
 		compiler.hooks.make.tapAsync(PLUGIN_NAME, (compilation, callback) => {
+			debugger;
 			compilation.addEntry(context, dep, options, err => {
 				callback(err);
 			});
