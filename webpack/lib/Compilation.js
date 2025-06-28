@@ -1947,7 +1947,14 @@ BREAKING CHANGE: Asset processing hooks in Compilation has been merged into a si
 		const moduleGraph = this.moduleGraph;
 		debugger;
 		const currentProfile = this.profile ? new ModuleProfile() : undefined;
-
+		// 将依赖项转换为实际的模块对象
+		/**
+		 * 作用
+		 * 模块工厂化: 它与 factorizeQueue 异步队列协作，将依赖项传递给相应的模块工厂来创建模块实例
+		 * 模块类型处理: 根据不同的依赖类型，调用相应的模块工厂（如 NormalModuleFactory、ContextModuleFactory 等）
+		 * 异步处理: 作为编译管道中的一个异步处理步骤，确保模块创建过程不会阻塞其他操作
+		 *
+		 */
 		this.factorizeModule(
 			{
 				currentProfile,
@@ -2400,7 +2407,7 @@ BREAKING CHANGE: Asset processing hooks in Compilation has been merged into a si
 				}
 			}
 		}
-
+		// 没添加一个入口文件，就触发addEntry钩子
 		this.hooks.addEntry.call(entry, options);
 
 		this.addModuleTree(

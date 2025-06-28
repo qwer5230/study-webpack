@@ -54,6 +54,8 @@ class NodeEnvironmentPlugin {
 		const inputFileSystem =
 			/** @type {InputFileSystem} */
 			(compiler.inputFileSystem);
+		debugger;
+		// 在这里把compiler.outputFileSystem 赋值为fs， 也就是node的fs模块
 		compiler.outputFileSystem = fs;
 		compiler.intermediateFileSystem = fs;
 		compiler.watchFileSystem = new NodeWatchFileSystem(inputFileSystem);

@@ -719,6 +719,7 @@ class Compiler {
 		const emitFiles = err => {
 			if (err) return callback(err);
 			debugger;
+			// 开始写入文件了，一般来说 source children 是两个， 第一个是编译后内容，第二个是sourceMap
 			const assets = compilation.getAssets();
 			compilation.assets = { ...compilation.assets };
 			/** @type {Map<string, SimilarEntry>} */

@@ -4489,6 +4489,7 @@ class JavascriptParser extends Parser {
 			}
 		} else {
 			comments = [];
+			// 一般来说，就是在这里给他转换成AST了
 			ast = JavascriptParser._parse(source, {
 				sourceType: this.sourceType,
 				onComment: comments,

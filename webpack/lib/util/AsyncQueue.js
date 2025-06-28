@@ -63,6 +63,7 @@ class AsyncQueueEntry {
  * @template K
  * @template R
  */
+// factorizeModule 的核心， 队列
 class AsyncQueue {
 	/**
 	 * @param {object} options options object
