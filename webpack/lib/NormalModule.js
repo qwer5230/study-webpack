@@ -1000,7 +1000,7 @@ class NormalModule extends Module {
 			(this.buildInfo).buildDependencies = new LazySet();
 		}
 		debugger;
-		/** 开始执行 loader, 转换成标准的js */
+		/** 开始执行 loader, 转换成标准的js ， loaders 就是我们在webpack 下面对对应资源下配置的loader集合 */
 		runLoaders(
 			{
 				resource: this.resource,
@@ -1032,6 +1032,8 @@ class NormalModule extends Module {
 				}
 			},
 			(err, result) => {
+				// loader 的执行结果
+				debugger;
 				// Cleanup loaderContext to avoid leaking memory in ICs
 				loaderContext._compilation =
 					loaderContext._compiler =
@@ -1218,6 +1220,8 @@ class NormalModule extends Module {
 			};
 
 			const handleParseResult = () => {
+				debugger;
+				//处理模块依赖数组
 				this.dependencies.sort(
 					concatComparators(
 						compareSelect(a => a.loc, compareLocations),

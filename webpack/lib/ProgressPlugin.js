@@ -443,6 +443,8 @@ class ProgressPlugin {
 		});
 
 		compiler.hooks.compilation.tap(PLUGIN_NAME, compilation => {
+			/** 输出阶段 (95-100%)：生成最终资源  */
+			debugger;
 			if (compilation.compiler.isChild()) return;
 			lastModulesCount = modulesCount;
 			lastEntriesCount = entriesCount;
